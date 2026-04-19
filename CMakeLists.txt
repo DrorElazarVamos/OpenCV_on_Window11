@@ -9,3 +9,5 @@ find_package(OpenCV REQUIRED)
 add_executable(opencv_app OpenCV.cc)
 target_include_directories(opencv_app PRIVATE ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(opencv_app ${OpenCV_LIBS})
+add_compile_definitions(CMAKE_BUILD_VERSION="${CMAKE_VERSION}") #for the status_opencv
+
