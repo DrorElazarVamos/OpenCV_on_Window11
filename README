@@ -1,0 +1,72 @@
+### OpenCV for Windows 11 (GCC / MSYS2) ###
+
+Ready-to-use build scripts for compiling OpenCV C++ projects on Windows 11 using the MSYS2 UCRT64 GCC toolchain — no MSVC required (visual studio from microsoft).
+
+## Preface
+The official OpenCV pre-built binaries are designed from MSVC and will produce linker errors when used with GCC. 
+If you want to build OpenCV C++ projects with GCC on Windows, you need to compile OpenCV from source first. These scripts automate that entire process.
+
+## Contents
+`build_opencv.sh` | Builds OpenCV from source using GCC + Ninja (run once)
+`build.sh` | Configures and builds your project against the GCC-compiled OpenCV
+
+## Prerequisites
+### 1.1. c\c++ compiler (MSYS2 ucrt64)
+### 1.2. cmake
+### 1.3. ninja
+
+run these command in git\bash terminal for updates dependencies
+```bash
+pacman -S mingw-w64-ucrt-x86_64-gcc
+pacman -S mingw-w64-ucrt-x86_64-cmake
+pacman -S mingw-w64-ucrt-x86_64-ninja
+```
+Add `C:\msys64\ucrt64\bin` to your Windows system `PATH`.
+
+### 2. Download OpenCV Source
+Download OpenCV 4.12.0 source from [https://opencv.org/releases](https://opencv.org/releases) and extract it to:
+
+## Quick Start
+### Step 1 — Build OpenCV from Source (run once)
+
+From any MSYS2 or Git Bash terminal:
+```bash
+bash build_opencv.sh
+```
+This will configure, compile, and install OpenCV to `C:\Users\USER\opencv\install_mingw`. This step takes several minutes.
+
+### Step 2 — Add OpenCV DLLs to PATH (run once)
+
+Add the following to your Windows system `PATH` so compiled executables can find the DLLs at runtime:
+```
+C:\Users\USER\opencv\install_mingw\x64\mingw\bin
+```
+
+### Step 3 — Build Your Project
+
+```bash
+bash build.sh
+```
+
+### Step 4 — Run
+
+```bash
+./build/opencv_app.exe
+```
+
+---
+
+## Project Structure
+
+```
+your_project/
+├── OpenCV.cc           ← your source file
+├── CMakeLists.txt
+├── build_init/
+|    └───build.sh
+|    └───build_opencv.sh
+└── .vscode/
+    └── settings.json   ← IntelliSense config for VS Code
+```
+
+ to use, modify, and distribute.
