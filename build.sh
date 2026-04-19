@@ -5,6 +5,8 @@ set -e
 
 CC="C:/msys64/ucrt64/bin/gcc.exe"
 CXX="C:/msys64/ucrt64/bin/g++.exe"
+
+#change to your relevant path
 OPENCV_INSTALL="C:/Users/USER/opencv/install_mingw"
 OPENCV_BIN="C:/Users/USER/opencv/install_mingw/x64/mingw/bin"
 
@@ -21,3 +23,8 @@ cmake --build build
 export PATH="$OPENCV_BIN:$PATH"
 echo ""
 echo "Build done. Run:  PATH=\"$OPENCV_BIN:\$PATH\" ./build/opencv_app.exe"
+
+
+
+
+    
